@@ -1,9 +1,21 @@
+
 #include "dominion.h"
 #include "dominion_helpers.h"
 #include "rngs.h"
 #include <stdio.h>
 #include <math.h>
 #include <stdlib.h>
+
+int getNumBuys(struct gameState *state)
+{
+        return state->numBuys;
+}
+
+void setNumBuys(struct gameState *state, int numBuysIn)
+{
+	state->numBuys=numBuysIn;
+}
+
 
 int compare(const void* a, const void* b) {
     if (*(int*)a > *(int*)b)
@@ -184,7 +196,7 @@ int initializeGame(int numPlayers, int kingdomCards[10], int randomSeed,
     state->outpostPlayed = 0;
     state->phase = 0;
     state->numActions = 1;
-    state->numBuys = 1;
+	setNumBuys(state, 1);
     state->playedCardCount = 0;
     state->whoseTurn = 0;
     state->handCount[state->whoseTurn] = 0;
@@ -281,7 +293,7 @@ int buyCard(int supplyPos, struct gameState *state) {
 
     who = state->whoseTurn;
 
-    if (state->numBuys < 1) {
+    if (getNumBuys(state) < 1) {
         if (DEBUG)
             printf("You do not have any buys left\n");
         return -1;
@@ -299,9 +311,9 @@ int buyCard(int supplyPos, struct gameState *state) {
         gainCard(supplyPos, state, 0, who); //card goes in discard, this might be wrong.. (2 means goes into hand, 0 goes into discard)
 
         state->coins = (state->coins) - (getCost(supplyPos));
-        state->numBuys--;
+        setNumBuys(state,getNumBuys(state)-1);
         if (DEBUG)
-            printf("You bought card number %d for %d coins. You now have %d buys and %d coins.\n", supplyPos, getCost(supplyPos), state->numBuys, state->coins);
+            printf("You bought card number %d for %d coins. You now have %d buys and %d coins.\n", supplyPos, getCost(supplyPos), getNumBuys(state), state->coins);
     }
 
     //state->discard[who][state->discardCount[who]] = supplyPos;
@@ -373,7 +385,7 @@ int endTurn(struct gameState *state) {
     state->phase = 0;
     state->numActions = 1;
     state->coins = 0;
-    state->numBuys = 1;
+    setNumBuys(state, 1);
     state->playedCardCount = 0;
     state->handCount[state->whoseTurn] = 0;
 
@@ -733,7 +745,7 @@ int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState
         }
 
         //+1 Buy
-        state->numBuys++;
+		setNumBuys(state, getNumBuys(state)+1)
 
         //Each other player draws a card
         for (i = 0; i < state->numPlayers; i++)
@@ -889,7 +901,7 @@ int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState
         return 0;
 
     case baron:
-        state->numBuys++;//Increase buys by 1!
+		setNumBuys(state, getNumBuys(state)+1)
         if (choice1 > 0) { //Boolean true or going to discard an estate
             int p = 0;//Iterator for hand!
             int card_not_discarded = 1;//Flag for discard set!
@@ -1204,7 +1216,7 @@ int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState
 
     case salvager:
         //+1 buy
-        state->numBuys++;
+        setNumBuys(state, getNumBuys(state)+1)
 
         if (choice1)
         {
