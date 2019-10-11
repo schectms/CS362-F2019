@@ -73,6 +73,12 @@ struct gameState {
     int playedCardCount;
 };
 
+int getNumBuys(struct gameState *state);
+void playBaron(struct gameState *state, int choice1, int currentPlayer);
+void playMinion(struct gameState *state, int handPos, int currentPlayer, int choice1, int choice2);
+void playAmbassador(int choice2, int choice1, int handPos, struct gameState *state, int currentPlayer);
+void playTribute(struct gameState *state, int nextPlayer, int currentPlayer);
+
 /* All functions return -1 on failure, and DO NOT CHANGE GAME STATE;
    unless specified for other return, return 0 on success */
 
@@ -127,5 +133,6 @@ int scoreFor(int player, struct gameState *state);
 int getWinners(int players[MAX_PLAYERS], struct gameState *state);
 /* Set array position of each player who won (remember ties!) to
    1, others to 0 */
+   
 
 #endif
