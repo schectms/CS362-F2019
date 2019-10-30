@@ -1,2 +1,5 @@
-gcc -c dominion.c -g  -Wall -fpic -coverage -lm -std=c99
-gcc -o playdom playdom.c -g dominion.o rngs.o -Wall -fpic -coverage -lm -std=c99
+gcc -o unitTest1 -g unitTest1.c dominion.o rngs.o interface.o -Wall -fpic -coverage -lm -std=c99
+unitTest1.c: In function ‘main’:
+unitTest1.c:46:6: warning: variable ‘estateFound’ set but not used [-Wunused-but-set-variable]
+  int estateFound = 0;
+      ^
