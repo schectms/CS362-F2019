@@ -1,0 +1,3 @@
+cc -o testme testme.c -Wall -fpic -coverage -lm -std=c99
+./testme &> testresults.out
+make: *** [runtests] Error 200
