@@ -46,7 +46,8 @@ int playBaron(struct gameState* state, int choice1, int currentPlayer)
 						isGameOver(state);
 					}
 				}
-			}
+				card_not_discarded=0;
+		}
 
 			else {
 				p++;//Next card
