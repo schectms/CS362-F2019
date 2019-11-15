@@ -35,7 +35,7 @@ int main() {
 	{
 		seed = 1000; //randomize seed
 		numPlayers = (rand() % (4 + 1 - 2)) + 1; //randomize numPlayers
-		choice1 = rand() % 9; //randomize choice1
+		choice1 = rand() % 2; //randomize choice1
 		initializeGame(numPlayers, k, seed, &G); //start game
 	
                 currentPlayer = (rand() % numPlayers); //randomize current player
@@ -97,8 +97,21 @@ int main() {
 			}
 			assert(numEstates==estateFound-1); //player should now have 1 less estate
 		}
+
+		//no estates available, no state change
+		else if(G.supplyCount[estate] ==0)
+		{
+		        f=fopen("test1.txt", "a");
+                        fprintf(f, "Test # %d\n", i);
+                        fclose(f);
+		
+			assert(testG.handCount[currentPlayer]==G.handCount[currentPlayer]);
+			assert(testG.coins==G.coins);
+	
+		}
+
 		//tests that player gains estate properly
-		else if(choice1 ==0 && G.supplyCount[estate]>0) 
+		else  
 		{
 			f=fopen("test1.txt", "a");
                         fprintf(f, "Test # %d\n", i);
@@ -130,17 +143,6 @@ int main() {
                         }
                         assert(numEstates==estateFound+1); //player should now have 1 more estate
 
-		}
-		//no estates available, no state change
-		else if(G.supplyCount[estate] ==0)
-		{
-		        f=fopen("test1.txt", "a");
-                        fprintf(f, "Test # %d\n", i);
-                        fclose(f);
-		
-			assert(testG.handCount[currentPlayer]==G.handCount[currentPlayer]);
-			assert(testG.coins==G.coins);
-	
 		}
 	}
 	return 0;

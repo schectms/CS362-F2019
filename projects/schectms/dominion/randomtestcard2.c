@@ -40,18 +40,18 @@ int main() {
 		seed = 1000; //randomize seed
 		
 		numPlayers = (rand() % (4 + 1 - 2)) + 1; //randomize numPlayers
-		//currentPlayer = (rand() % numPlayers); //randomize current player
-
-		if ((rand() % 1) == 0)
+		
+		int random=rand() %2;
+		if ((random) == 0)
 		{
-			choice1 = 0;
-			choice2 = 1;
+			choice1 = 1;
+			choice2 = 0;
 		}
 
 		else
 		{
-			choice1 = 1;
-			choice2 = 0;
+			choice1 = 0;
+			choice2 = 1;
 		}
 
 		initializeGame(numPlayers, k, seed, &G); //start game

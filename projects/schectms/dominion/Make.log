@@ -1,7 +1,116 @@
-./randomtest1
-./randomtest2
-./randomtest3
-cat test1.txt >> randomtestresults.out
-cat test2.txt >> randomtestresults.out	
-cat test3.txt >> randomtestresults.out
-gcov -b -f dominion.c >> randomtestresults.out
+gcc -o randomtest2 randomtestcard2.c -g dominion.o rngs.o interface.o -Wall -fpic -coverage -lm -std=c99
+randomtestcard2.c:13:0: warning: "assert" redefined [enabled by default]
+ #define assert(x) {f=fopen("test2.txt", "a"); if (x == 0) fprintf(f, "Test Failed\n"); else fprintf(f, "Test Passed\n"); fclose(f);}
+ ^
+In file included from randomtestcard2.c:5:0:
+/usr/include/assert.h:86:0: note: this is the location of the previous definition
+ # define assert(expr)       \
+ ^
+randomtestcard2.c: In function ‘main’:
+randomtestcard2.c:18:2: warning: implicit declaration of function ‘time’ [-Wimplicit-function-declaration]
+  srand(time(NULL));
+  ^
+randomtestcard2.c:68:25: warning: suggest parentheses around comparison in operand of ‘==’ [-Wparentheses]
+    assert((testG.coins) == (G.coins + 2)); //player needs to gain 2 coins
+                         ^
+randomtestcard2.c:13:51: note: in definition of macro ‘assert’
+ #define assert(x) {f=fopen("test2.txt", "a"); if (x == 0) fprintf(f, "Test Failed\n"); else fprintf(f, "Test Passed\n"); fclose(f);}
+                                                   ^
+randomtestcard2.c:69:28: warning: suggest parentheses around comparison in operand of ‘==’ [-Wparentheses]
+    assert(testG.numActions == G.numActions + 1); //actions needs to be incremented
+                            ^
+randomtestcard2.c:13:51: note: in definition of macro ‘assert’
+ #define assert(x) {f=fopen("test2.txt", "a"); if (x == 0) fprintf(f, "Test Failed\n"); else fprintf(f, "Test Passed\n"); fclose(f);}
+                                                   ^
+randomtestcard2.c:75:29: warning: suggest parentheses around comparison in operand of ‘==’ [-Wparentheses]
+      assert(testG.handCount == (G.handCount - 1)); //same hand-minion card
+                             ^
+randomtestcard2.c:13:51: note: in definition of macro ‘assert’
+ #define assert(x) {f=fopen("test2.txt", "a"); if (x == 0) fprintf(f, "Test Failed\n"); else fprintf(f, "Test Passed\n"); fclose(f);}
+                                                   ^
+randomtestcard2.c:76:35: warning: suggest parentheses around comparison in operand of ‘==’ [-Wparentheses]
+      assert(testG.discardCount[a] == G.discardCount[a]); //no cards discarded
+                                   ^
+randomtestcard2.c:13:51: note: in definition of macro ‘assert’
+ #define assert(x) {f=fopen("test2.txt", "a"); if (x == 0) fprintf(f, "Test Failed\n"); else fprintf(f, "Test Passed\n"); fclose(f);}
+                                                   ^
+randomtestcard2.c:80:32: warning: suggest parentheses around comparison in operand of ‘==’ [-Wparentheses]
+      assert(testG.handCount[a] == G.handCount[a]); //all other players hands have not chnaged
+                                ^
+randomtestcard2.c:13:51: note: in definition of macro ‘assert’
+ #define assert(x) {f=fopen("test2.txt", "a"); if (x == 0) fprintf(f, "Test Failed\n"); else fprintf(f, "Test Passed\n"); fclose(f);}
+                                                   ^
+randomtestcard2.c:81:35: warning: suggest parentheses around comparison in operand of ‘==’ [-Wparentheses]
+      assert(testG.discardCount[a] == G.discardCount[a]); //no cards discarded
+                                   ^
+randomtestcard2.c:13:51: note: in definition of macro ‘assert’
+ #define assert(x) {f=fopen("test2.txt", "a"); if (x == 0) fprintf(f, "Test Failed\n"); else fprintf(f, "Test Passed\n"); fclose(f);}
+                                                   ^
+randomtestcard2.c:85:33: warning: suggest parentheses around comparison in operand of ‘==’ [-Wparentheses]
+    assert(testG.playedCardCount == G.playedCardCount + 1); //minion card played
+                                 ^
+randomtestcard2.c:13:51: note: in definition of macro ‘assert’
+ #define assert(x) {f=fopen("test2.txt", "a"); if (x == 0) fprintf(f, "Test Failed\n"); else fprintf(f, "Test Passed\n"); fclose(f);}
+                                                   ^
+randomtestcard2.c:89:23: warning: suggest parentheses around comparison in operand of ‘==’ [-Wparentheses]
+    assert(testG.coins == G.coins); //coins do not change
+                       ^
+randomtestcard2.c:13:51: note: in definition of macro ‘assert’
+ #define assert(x) {f=fopen("test2.txt", "a"); if (x == 0) fprintf(f, "Test Failed\n"); else fprintf(f, "Test Passed\n"); fclose(f);}
+                                                   ^
+randomtestcard2.c:90:28: warning: suggest parentheses around comparison in operand of ‘==’ [-Wparentheses]
+    assert(testG.numActions == (G.numActions + 1)); //actions needs to be incremented
+                            ^
+randomtestcard2.c:13:51: note: in definition of macro ‘assert’
+ #define assert(x) {f=fopen("test2.txt", "a"); if (x == 0) fprintf(f, "Test Failed\n"); else fprintf(f, "Test Passed\n"); fclose(f);}
+                                                   ^
+randomtestcard2.c:96:32: warning: suggest parentheses around comparison in operand of ‘==’ [-Wparentheses]
+      assert(testG.handCount[b] == 4); //all players with >5 cards discard and get 4 new ones
+                                ^
+randomtestcard2.c:13:51: note: in definition of macro ‘assert’
+ #define assert(x) {f=fopen("test2.txt", "a"); if (x == 0) fprintf(f, "Test Failed\n"); else fprintf(f, "Test Passed\n"); fclose(f);}
+                                                   ^
+randomtestcard2.c:100:32: warning: suggest parentheses around comparison in operand of ‘==’ [-Wparentheses]
+      assert(testG.handCount[b] == G.handCount[b]); //all other players card count stays the same
+                                ^
+randomtestcard2.c:13:51: note: in definition of macro ‘assert’
+ #define assert(x) {f=fopen("test2.txt", "a"); if (x == 0) fprintf(f, "Test Failed\n"); else fprintf(f, "Test Passed\n"); fclose(f);}
+                                                   ^
+randomtestcard2.c:104:33: warning: suggest parentheses around comparison in operand of ‘==’ [-Wparentheses]
+    assert(testG.playedCardCount == G.playedCardCount + 1); //minion card played
+                                 ^
+randomtestcard2.c:13:51: note: in definition of macro ‘assert’
+ #define assert(x) {f=fopen("test2.txt", "a"); if (x == 0) fprintf(f, "Test Failed\n"); else fprintf(f, "Test Passed\n"); fclose(f);}
+                                                   ^
+make: Warning: File `randomtestcard3.c' has modification time 12 s in the future
+gcc -o randomtest3 randomtestcard3.c -g dominion.o rngs.o interface.o -Wall -fpic -coverage -lm -std=c99
+randomtestcard3.c:13:0: warning: "assert" redefined [enabled by default]
+ #define assert(x) {f=fopen("test3.txt", "a"); if (x == 0) fprintf(f, "Test Failed\n"); else fprintf(f, "Test Passed\n"); fclose(f);}
+ ^
+In file included from randomtestcard3.c:5:0:
+/usr/include/assert.h:86:0: note: this is the location of the previous definition
+ # define assert(expr)       \
+ ^
+randomtestcard3.c: In function ‘main’:
+randomtestcard3.c:18:2: warning: implicit declaration of function ‘time’ [-Wimplicit-function-declaration]
+  srand(time(NULL));
+  ^
+randomtestcard3.c:99:23: warning: suggest parentheses around comparison in operand of ‘==’ [-Wparentheses]
+     assert(testG.coins==G.coins +2); 
+                       ^
+randomtestcard3.c:13:51: note: in definition of macro ‘assert’
+ #define assert(x) {f=fopen("test3.txt", "a"); if (x == 0) fprintf(f, "Test Failed\n"); else fprintf(f, "Test Passed\n"); fclose(f);}
+                                                   ^
+randomtestcard3.c:105:42: warning: suggest parentheses around comparison in operand of ‘==’ [-Wparentheses]
+     assert(testG.handCount[currentplayer]==G.handCount[currentplayer]+2);
+                                          ^
+randomtestcard3.c:13:51: note: in definition of macro ‘assert’
+ #define assert(x) {f=fopen("test3.txt", "a"); if (x == 0) fprintf(f, "Test Failed\n"); else fprintf(f, "Test Passed\n"); fclose(f);}
+                                                   ^
+randomtestcard3.c:110:28: warning: suggest parentheses around comparison in operand of ‘==’ [-Wparentheses]
+     assert(testG.numActions==G.numActions +2);
+                            ^
+randomtestcard3.c:13:51: note: in definition of macro ‘assert’
+ #define assert(x) {f=fopen("test3.txt", "a"); if (x == 0) fprintf(f, "Test Failed\n"); else fprintf(f, "Test Passed\n"); fclose(f);}
+                                                   ^
+make: warning:  Clock skew detected.  Your build may be incomplete.

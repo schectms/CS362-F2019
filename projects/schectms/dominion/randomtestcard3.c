@@ -54,8 +54,8 @@ int main() {
 			nextplayer=0;
 		}
 		
-		G.discardCount[nextplayer]= rand() % MAX_DECK;
-		G.deckCount[nextplayer]=rand() % MAX_DECK;
+		G.discardCount[nextplayer]= rand() % 20;
+		G.deckCount[nextplayer]=rand() % 20;
 	
 		memcpy(&testG, &G, sizeof(struct gameState)); //copy the game state for testing
 		playTribute(&testG, nextplayer, currentplayer); //call refactored function
