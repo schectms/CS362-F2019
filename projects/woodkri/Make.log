@@ -1,0 +1,12 @@
+./unitTest1 &> assignment5.out
+./unitTest2 >> assignment5.out
+./unitTest3 >> assignment5.out
+./unitTest4 >> assignment5.out
+./unitTest5 >> assignment5.out
+./randomTest1
+./randomTest2
+./randomTest3
+cat test1.txt >> assignment5.out
+cat test2.txt >> assignment5.out
+cat test3.txt >> assignment5.out
+gcov -b -f dominion.c >> assignment5.out 
