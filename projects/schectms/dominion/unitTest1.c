@@ -173,11 +173,8 @@ int main() {
 	assert(estateFound);
 
 
-
-
 	printf("\n >>>>> SUCCESS: Testing complete %s <<<<<\n\n", TESTCARD);
 
-	assert(1);
 
 	return 0;
 }
