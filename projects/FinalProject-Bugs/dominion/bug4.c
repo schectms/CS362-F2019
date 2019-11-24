@@ -34,8 +34,8 @@ int main (int argc, char** argv) {
     initializeGame(numPlayers, k, seed, &G);
 
     G.supplyCount[0] = 0;
+    G.supplyCount[25] = 0;
     G.supplyCount[26] = 0;
-    G.supplyCount[27] = 0;
 
     printf("Calling isGameOver with 0 cards at indices 0, 26 and 27\n");
 
@@ -54,7 +54,7 @@ int main (int argc, char** argv) {
 
     G.supplyCount[0] = 0;
     G.supplyCount[1] = 0;
-    G.supplyCount[27] = 0;
+    G.supplyCount[26] = 0;
 
     printf("Calling isGameOver with 0 cards at indices 0, 1 and 27\n");
 
