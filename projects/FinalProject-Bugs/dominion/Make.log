@@ -10,3 +10,7 @@ bug3.c:30:2: warning: implicit declaration of function ‘cardEffect’ [-Wimpli
 bug3.c:11:6: warning: unused variable ‘nextPlayer’ [-Wunused-variable]
   int nextPlayer = 1;
       ^
+gcc -o bug4 bug4.c -g dominion.o rngs.o interface.o -Wall -fpic -coverage -lm -std=c99
+gcc -o bug8 bug8.c -g dominion.o rngs.o interface.o -Wall -fpic -coverage -lm -std=c99
+gcc -o bug9 bug9.c -g dominion.o rngs.o interface.o -Wall -fpic -coverage -lm -std=c99
+gcc -o bug10 bug10.c -g dominion.o rngs.o interface.o -Wall -fpic -coverage -lm -std=c99
