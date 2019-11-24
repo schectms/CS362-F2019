@@ -43,7 +43,11 @@ int main(int argc, char** argv) {
 	x = cardEffect(remodel, choice1, choice2, choice3, &testG, handPos, &bonus);
 
 	printf("Result of Card Effect= %d, Expected = %d\n", x, -1);
+<<<<<<< HEAD
 	//	printf("Top Card= %d, Expected = %d\n", testG.hand[thisPlayer][0], G.hand[thisPlayer][0]);
+=======
+//	printf("Top Card= %d, Expected = %d\n", testG.hand[thisPlayer][0], G.hand[thisPlayer][0]);
+>>>>>>> 4e6302500c8fc4600f8a3c66540718656106d0ae
 	printf("\n");
 
 	return 0;
