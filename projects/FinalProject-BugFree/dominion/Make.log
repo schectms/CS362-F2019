@@ -1,0 +1,12 @@
+gcc -o bug3 bug3.c -g dominion.o rngs.o interface.o -Wall -fpic -coverage -lm -std=c99
+bug3.c: In function ‘main’:
+bug3.c:26:2: warning: implicit declaration of function ‘memcpy’ [-Wimplicit-function-declaration]
+  memcpy(&testG, &G, sizeof(struct gameState));
+  ^
+bug3.c:26:2: warning: incompatible implicit declaration of built-in function ‘memcpy’ [enabled by default]
+bug3.c:30:2: warning: implicit declaration of function ‘cardEffect’ [-Wimplicit-function-declaration]
+  int x = cardEffect(remodel, choice1, choice2, choice3, &testG, handPos, &bonus);
+  ^
+bug3.c:11:6: warning: unused variable ‘nextPlayer’ [-Wunused-variable]
+  int nextPlayer = 1;
+      ^
