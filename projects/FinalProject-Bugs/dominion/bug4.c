@@ -9,12 +9,22 @@
 #include <time.h>
 #include <stdio.h>
 
+int assert(int expression) {
+    if (expression) {
+        //true
+        return 1;
+    }
+    else {
+        //false
+        return 0;
+    }
+}
+
 int main (int argc, char** argv) {
     //Set up game state
     struct gameState G;
     int seed = time(NULL);
     int numPlayers = 2;
-    int p = 0;
 
     //Declare arrays of cards
     int k[10] = {adventurer, council_room, feast, gardens, mine, remodel, smithy, village, baron, great_hall};
@@ -48,7 +58,7 @@ int main (int argc, char** argv) {
 
     printf("Calling isGameOver with 0 cards at indices 0, 1 and 27\n");
 
-    int result = isGameOver(&G);
+    result = isGameOver(&G);
     result = assert(result == 1);
     if (!result) {
         printf("FAIL - isGameOver did not return 1.\n");

@@ -45,7 +45,7 @@ int main (int argc, char** argv) {
     int coins = G.coins;
     int cards = G.handCount[p] + G.discardCount[p] + G.deckCount[p];
     printf("Calling cardEffect for Tribute with 2 silver cards\n");
-    cardEffect(tribute, NULL, NULL, NULL, &G, 0, NULL);
+    cardEffect(tribute, -1, -1, -1, &G, 0, NULL);
     int result = assert(G.coins == coins+2);
     if (!result) {
         printf("FAIL - Coins did not increase by 2.\n");
@@ -77,7 +77,7 @@ int main (int argc, char** argv) {
     coins = G.coins;
     cards = G.handCount[p] + G.discardCount[p] + G.deckCount[p];
     printf("\nCalling cardEffect for Tribute with 2 estate cards\n");
-    cardEffect(tribute, NULL, NULL, NULL, &G, 0, NULL);
+    cardEffect(tribute, -1, -1, -1, &G, 0, NULL);
     result = assert(G.coins == coins);
     if (!result) {
         printf("FAIL - Number of coins changed.\n");
@@ -109,7 +109,7 @@ int main (int argc, char** argv) {
     coins = G.coins;
     cards = G.handCount[p] + G.discardCount[p] + G.deckCount[p];
     printf("\nCalling cardEffect for Tribute with 2 baron cards\n");
-    cardEffect(tribute, NULL, NULL, NULL, &G, 0, NULL);
+    cardEffect(tribute, -1, -1, -1, &G, 0, NULL);
     result = assert(G.coins == coins);
     if (!result) {
         printf("FAIL - Number of coins changed.\n");

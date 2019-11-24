@@ -9,6 +9,17 @@
 #include <time.h>
 #include <stdio.h>
 
+int assert(int expression) {
+    if (expression) {
+        //true
+        return 1;
+    }
+    else {
+        //false
+        return 0;
+    }
+}
+
 int main (int argc, char** argv) {
     //Set up game state
     struct gameState G;
@@ -31,7 +42,7 @@ int main (int argc, char** argv) {
     G.handCount[p] = 5;
     G.whoseTurn = 0;
     printf("Calling cardEffect for Ambassador with choice to discard a Tribute card\n");
-    int result = cardEffect(ambassador, 3, 1, NULL, &G, 0, NULL);
+    int result = cardEffect(ambassador, 3, 1, -1, &G, 0, NULL);
     result = assert(result == 0);
     if (!result) {
         printf("FAIL - Function exited with wrong exit code.\n");
@@ -60,7 +71,7 @@ int main (int argc, char** argv) {
     G.hand[p][4] = minion;
     G.handCount[p] = 5;
     printf("Calling cardEffect for Ambassador with choice to discard two Minion cards\n");
-    int result = cardEffect(ambassador, 3, 2, NULL, &G, 0, NULL);
+    result = cardEffect(ambassador, 3, 2, -1, &G, 0, NULL);
     result = assert(result == 0);
     if (!result) {
         printf("FAIL - Function exited with wrong exit code.\n");

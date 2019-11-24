@@ -31,7 +31,19 @@ bug2: bug2.c interface.o
 bug3: bug3.c interface.o
 	gcc -o bug3 bug3.c -g dominion.o rngs.o interface.o $(CFLAGS)
 
-all: playdom player bug2 bug3
+bug4: bug4.c interface.o
+	gcc -o bug4 bug4.c -g dominion.o rngs.o interface.o $(CFLAGS)
+
+bug8: bug8.c interface.o
+	gcc -o bug8 bug8.c -g dominion.o rngs.o interface.o $(CFLAGS)
+
+bug9: bug9.c interface.o
+	gcc -o bug9 bug9.c -g dominion.o rngs.o interface.o $(CFLAGS)
+
+bug10: bug10.c interface.o
+	gcc -o bug10 bug10.c -g dominion.o rngs.o interface.o $(CFLAGS)
+
+all: playdom player bug2 bug3 bug4 bug8 bug9 bug10
 
 clean:
 	rm -f *.o playdom.exe playdom player player.exe  *.gcov *.gcda *.gcno *.so *.out testDrawCard testDrawCard.exe bug3 bug2

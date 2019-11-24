@@ -9,6 +9,17 @@
 #include <time.h>
 #include <stdio.h>
 
+int assert(int expression) {
+    if (expression) {
+        //true
+        return 1;
+    }
+    else {
+        //false
+        return 0;
+    }
+}
+
 int main (int argc, char** argv) {
     //Set up game state
     struct gameState G;
@@ -31,11 +42,11 @@ int main (int argc, char** argv) {
     updateCoins(G.whoseTurn, &G, 0);
 
     printf("Playing Baron card and discarding estate through playCard function\n");
-    playCard(0, 1, NULL, NULL, &G);
+    playCard(0, 1, -1, -1, &G);
 
    int result = assert(G.coins == 4);
    if (!result) {
-       printf("FAIL - Did not receive correct bonus.\n")
+       printf("FAIL - Did not receive correct bonus.\n");
    }
    else {
        printf("PASS - Received correct bonus.\n");
