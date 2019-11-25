@@ -467,7 +467,7 @@ int scoreFor (int player, struct gameState *state) {
     }
 
     //score from deck
-    for (i = 0; i < state->discardCount[player]; i++)
+    for (i = 0; i < state->deckCount[player]; i++)
     {
         if (state->deck[player][i] == curse) {
             score = score - 1;
@@ -759,7 +759,8 @@ int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState
         //Backup hand
 
         //Update Coins for Buy
-        updateCoins(currentPlayer, state, 5);
+        //updateCoins(currentPlayer, state, 5);
+        discardCard(handPos, currentPlayer, state, 1);
         x = 1;//Condition to loop on
         while( x == 1) {//Buy one card
             if (supplyCount(choice1, state) <= 0) {
@@ -770,7 +771,8 @@ int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState
                     printf("Cards Left: %d\n", supplyCount(choice1, state));
                 }
             }
-            else if (state->coins < getCost(choice1)) {
+            //else if (state->coins < getCost(choice1)) {
+            else if(getCost(choice1) > 5) {
                 printf("That card is too expensive!\n");
 
                 if (DEBUG) {
@@ -1030,6 +1032,7 @@ int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState
             if (state->deckCount[nextPlayer] > 0) {
                 tributeRevealedCards[0] = state->deck[nextPlayer][state->deckCount[nextPlayer]-1];
                 state->deckCount[nextPlayer]--;
+
             }
             else if (state->discardCount[nextPlayer] > 0) {
                 tributeRevealedCards[0] = state->discard[nextPlayer][state->discardCount[nextPlayer]-1];
@@ -1058,7 +1061,7 @@ int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState
             state->deck[nextPlayer][state->deckCount[nextPlayer]--] = -1;
             state->deckCount[nextPlayer]--;
             tributeRevealedCards[1] = state->deck[nextPlayer][state->deckCount[nextPlayer]-1];
-            state->deck[nextPlayer][state->deckCount[nextPlayer]--] = -1;
+            state->deck[nextPlayer][state->deckCount[nextPlayer]-1] = -1;
             state->deckCount[nextPlayer]--;
         }
 
@@ -1068,7 +1071,7 @@ int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState
             tributeRevealedCards[1] = -1;
         }
 
-        for (i = 0; i <= 2; i ++) {
+        for (i = 0; i < 2; i ++) {
             if (tributeRevealedCards[i] == copper || tributeRevealedCards[i] == silver || tributeRevealedCards[i] == gold) { //Treasure cards
                 *bonus += 2;
             }
