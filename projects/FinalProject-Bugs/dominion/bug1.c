@@ -29,7 +29,6 @@ int main(int argc, char** argv) {
 	cardEffect(tribute, choice1, choice2, choice3, &testG, handPos, &bonus);
 	//playedCards should contain the tribute card
 	printf("Result of Card Effect= %d, Expected = %d\n", testG.playedCardCount, G.playedCardCount + 1);
-	printf("Played Card= %d, Expected = %d\n", testG.playedCards[0], tribute);
 
 	// ----------- TEST 2: BUG 1 MINE CARD NOT DISCARDED--------------
 	printf("TEST 1: BUG 1 MINE CARD NOT DISCARDED\n");
