@@ -52,7 +52,7 @@ bug9: bug9.c interface.o
 bug10: bug10.c interface.o
 	gcc -o bug10 bug10.c -g dominion.o rngs.o interface.o $(CFLAGS)
 
-all: playdom player bug2 bug3 bug4 bug8 bug9 bug10
+all: playdom player bug2 bug3 bug4 bug5 bug6 bug7 bug8 bug9 bug10
 
 clean:
 	rm -f *.o playdom.exe playdom player player.exe  *.gcov *.gcda *.gcno *.so *.out testDrawCard testDrawCard.exe bug3 bug2
