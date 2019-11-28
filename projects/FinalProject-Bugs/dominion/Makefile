@@ -22,19 +22,19 @@ runtests: testDrawCard
 	cat dominion.c.gcov >> unittestresult.out
 
 
-player: player.c interface.o
+player: player.c interface.o dominion.o
 	gcc -o player player.c -g  dominion.o rngs.o interface.o $(CFLAGS)
 
-bug1: bug1.c interface.o
+bug1: bug1.c interface.o dominion.o
 	gcc -o bug1 bug1.c -g dominion.o rngs.o interface.o $(CFLAGS)
 
-bug2: bug2.c interface.o
+bug2: bug2.c interface.o dominion.o
 	gcc -o bug2 bug2.c -g dominion.o rngs.o interface.o $(CFLAGS)
 
-bug3: bug3.c interface.o
+bug3: bug3.c interface.o dominion.o
 	gcc -o bug3 bug3.c -g dominion.o rngs.o interface.o $(CFLAGS)
 
-bug4: bug4.c interface.o
+bug4: bug4.c interface.o dominion.o
 	gcc -o bug4 bug4.c -g dominion.o rngs.o interface.o $(CFLAGS)
 
 bug5: bug5.c dominion.o rngs.o 
@@ -46,14 +46,28 @@ bug6: bug6.c dominion.o rngs.o
 bug7: bug7.c dominion.o rngs.o
 	gcc -o bug7 bug7.c -g dominion.o rngs.o $(CFLAGS)
 
-bug8: bug8.c interface.o
+bug8: bug8.c interface.o dominion.o
 	gcc -o bug8 bug8.c -g dominion.o rngs.o interface.o $(CFLAGS)
 
-bug9: bug9.c interface.o
+bug9: bug9.c interface.o dominion.o
 	gcc -o bug9 bug9.c -g dominion.o rngs.o interface.o $(CFLAGS)
 
-bug10: bug10.c interface.o
+bug10: bug10.c interface.o dominion.o
 	gcc -o bug10 bug10.c -g dominion.o rngs.o interface.o $(CFLAGS)
+
+unittestresults: bug1 bug2 bug3 bug4 bug5 bug6 bug7 bug8 bug9 bug10
+	./bug1 &> unittestresults.out
+	./bug2 >> unittestresults.out
+	./bug3 >> unittestresults.out
+	./bug4 >> unittestresults.out
+	./bug5 >> unittestresults.out
+	./bug6 >> unittestresults.out
+	./bug7 >> unittestresults.out
+	./bug8 >> unittestresults.out
+	./bug9 >> unittestresults.out
+	./bug10 >> unittestresults.out
+	gcov -b -f dominion.c >> unittestresults.out
+	cat dominion.c.gcov >> unittestresults.out
 
 all: playdom player bug1 bug2 bug3 bug4 bug5 bug6 bug7 bug8 bug9 bug10
 
