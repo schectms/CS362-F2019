@@ -26,6 +26,7 @@ int main(int argc, char** argv)
     int actualHandCards = 0;
     int expectedNumActions = 0;
     int actualNumActions = 0;
+    int i;
 
     //initialize a new game
     initializeGame(numPlayers, k, seed, &G);
@@ -66,7 +67,8 @@ int main(int argc, char** argv)
     cardEffect(card, choice1, choice2, choice3, &testG, handPos, &bonus);
 
     //set variables for expected and actual cards in hand
-    expectedHandCards = G.handCount[currentPlayer] + 2;
+    //set expected to +1 since discarding tribute card so number of cards in hand increases by 1
+    expectedHandCards = G.handCount[currentPlayer] + 1;
     actualHandCards = testG.handCount[currentPlayer];
 
     printf("Expected number of cards in player's hand: %d, Actual number of cards in player's hand: %d\n", expectedHandCards, actualHandCards);
